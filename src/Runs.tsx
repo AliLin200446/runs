@@ -456,6 +456,22 @@ export function Runs() {
         >
           {String(front + 1).padStart(2, "0")} / 05
         </div>
+        <button
+          className="motion-play"
+          aria-label={playing ? "Pause motion" : "Play motion"}
+          title={playing ? "Pause motion" : "Play motion"}
+          onPointerDown={(e) => e.stopPropagation()}
+          onPointerUp={(e) => e.stopPropagation()}
+          onClick={togglePlay}
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            {playing ? (
+              <path d="M6 5h4v14H6zM14 5h4v14h-4z" />
+            ) : (
+              <path d="M7 4v16l13-8z" />
+            )}
+          </svg>
+        </button>
       </section>
       {import.meta.env.DEV && debugMode && (
         <nav className="dev-controls" aria-label="Motion development controls">

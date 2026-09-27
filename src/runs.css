@@ -224,6 +224,30 @@ button:focus-visible {
 .textless .annotation {
   visibility: hidden;
 }
+.motion-play {
+  position: absolute;
+  right: 5%;
+  bottom: 7%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: rgb(36 38 32 / 0.55);
+  cursor: pointer;
+}
+.motion-play:hover,
+.motion-play:focus-visible {
+  color: #242620;
+}
+.motion-play svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
 .asset-status {
   position: absolute;
   top: 50%;

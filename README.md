@@ -13,6 +13,8 @@ Open http://localhost:5188. `npm run build` type-checks the project and builds `
 
 ## Interaction
 
+- Use the bottom-right ▶ button to play the nine-second motion sequence. During playback it becomes a pause button; after completion it replays the sequence.
+
 - Hover the portrait to separate five runs from one stack.
 - Drag horizontally from a print to enter the field and inspect runs. Drag right to advance, left to reverse. Release to settle on the nearest inspection axis.
 - Click the facing run to overlay it on EXPECTED. Evaluation metadata follows after the image settles. After five seconds, the planes retract through FIELD → RUNS → SINGLE.
