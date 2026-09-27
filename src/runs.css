@@ -1,0 +1,320 @@
+@font-face {
+  font-family: Plex;
+  src: url("/fonts/ibm-plex-mono.ttf");
+}
+:root {
+  font-family: Plex, monospace;
+  color: #242620;
+  background: #f3f1e9;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+}
+button,
+input {
+  font: inherit;
+}
+button {
+  color: inherit;
+}
+button:focus-visible {
+  outline: 1px solid #687259;
+  outline-offset: 7px;
+}
+.runs-app {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.composition {
+  position: relative;
+  width: min(100vw, 177.7778svh);
+  aspect-ratio: 16/9;
+  background: #f3f1e9;
+  overflow: hidden;
+  isolation: isolate;
+  touch-action: none;
+  container-type: inline-size;
+  user-select: none;
+}
+.meta {
+  font-family: Plex, monospace;
+  font-size: 0.625cqw;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  line-height: 1.8;
+  color: rgb(36 38 32 / 0.48);
+}
+.masthead {
+  position: absolute;
+  top: 7%;
+  left: 6.5%;
+}
+.wordmark {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 3.3cqw;
+  font-weight: 700;
+  letter-spacing: -0.21cqw;
+  line-height: 1;
+}
+.wordmark > span {
+  vertical-align: top;
+  display: inline-block;
+  margin: 0.28cqw 0 0 0.75cqw;
+}
+.control {
+  position: absolute;
+  left: 9%;
+  top: 41%;
+  line-height: 1.8;
+}
+.lens {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 2.25cqw;
+  letter-spacing: -0.1cqw;
+  margin: 0 0 0.7cqw;
+}
+.world {
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  width: 1440px;
+  height: 810px;
+  transform-style: preserve-3d;
+  perspective: 1500px;
+  pointer-events: none;
+  transform-origin: center;
+}
+.world .meta {
+  font-size: 9px;
+}
+.print,
+.expected {
+  position: absolute;
+  left: calc(50% - 135px);
+  top: calc(50% - 182px);
+  width: 270px;
+  height: 364px;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  transform-style: preserve-3d;
+}
+.print {
+  pointer-events: auto;
+  cursor: grab;
+  will-change: transform, opacity;
+  appearance: none;
+  text-align: left;
+}
+.print:active {
+  cursor: grabbing;
+}
+.image-window {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #b5b3a7;
+  clip-path: inset(
+    var(--slit-inset, 0px) calc((270 - var(--aperture, 270)) * 0.5px)
+  );
+}
+.image-window img,
+.expected-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+.image-window img {
+  position: relative;
+  left: var(--crop-shift, 0px);
+}
+.run-label {
+  position: absolute;
+  left: 0;
+  bottom: -24px;
+  opacity: var(--label-opacity, 0);
+  white-space: nowrap;
+  pointer-events: none;
+}
+.print:hover .run-label,
+.print:focus-visible .run-label {
+  opacity: var(--fan-label, 0);
+}
+.expected {
+  width: 286px;
+  height: 380px;
+  left: calc(50% - 143px);
+  top: calc(50% - 190px);
+  pointer-events: none;
+  transform: translateZ(-3px);
+}
+.expected-photo {
+  position: absolute;
+  inset: 7px;
+  opacity: var(--reference, 0);
+  overflow: hidden;
+}
+.expected-photo img {
+  transform: scale(1.04);
+}
+.expected-label {
+  position: absolute;
+  left: 0;
+  top: -25px;
+  opacity: var(--comparison, 0);
+}
+.corner {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-color: rgb(36 38 32 / 0.24);
+  border-style: solid;
+  opacity: var(--comparison, 0);
+}
+.corner.a {
+  left: -1px;
+  top: -1px;
+  border-width: 1px 0 0 1px;
+}
+.corner.c {
+  right: -1px;
+  bottom: -1px;
+  border-width: 0 1px 1px 0;
+}
+.evaluation {
+  position: absolute;
+  top: 41%;
+  left: 77%;
+  width: 13%;
+  opacity: var(--metrics, 0);
+  pointer-events: none;
+}
+.evaluation dl {
+  margin: 1.4cqw 0 0;
+  padding: 0;
+}
+.evaluation dl > div {
+  display: flex;
+  justify-content: space-between;
+  line-height: 2.2;
+}
+.evaluation dd {
+  margin: 0;
+}
+.sample-caption {
+  position: absolute;
+  top: 84%;
+  left: var(--counter-left, 53.8%);
+  transform: translateX(-50%);
+  pointer-events: none;
+  transition: opacity 0.25s linear;
+}
+.textless .annotation {
+  visibility: hidden;
+}
+.asset-status {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 9px;
+  background: #f3f1e9;
+  padding: 12px;
+  pointer-events: none;
+}
+/* Development UI lives outside the composition and is mounted only with D. */
+.debug {
+  padding: 24px 32px 0;
+}
+.debug .composition {
+  width: min(100%, calc((100svh - 110px) * 16 / 9));
+}
+.dev-controls {
+  width: min(100%, 1600px);
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  color: #777b70;
+}
+.dev-controls > div {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.dev-controls button {
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  border: 0;
+  padding: 8px 0;
+  background: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.dev-controls button:hover {
+  color: #171b14;
+}
+.dev-controls button[aria-pressed="true"] {
+  color: #8c6246;
+}
+.dev-controls .play {
+  color: #38422d;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.play > span {
+  font-size: 15px;
+}
+.timeline {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex: 1;
+  max-width: 400px;
+}
+.timeline > span {
+  white-space: nowrap;
+  font-size: 9px;
+  font-variant-numeric: tabular-nums;
+}
+.timeline input {
+  width: 100%;
+  height: 1px;
+  accent-color: #606b4e;
+  cursor: ew-resize;
+}
+@media (max-width: 700px) {
+  .debug {
+    padding: 12px 8px;
+  }
+  .dev-controls {
+    flex-wrap: wrap;
+    height: auto;
+    gap: 10px;
+    padding: 15px 4px;
+  }
+  .dev-controls > div {
+    gap: 12px;
+  }
+  .timeline {
+    order: 3;
+    max-width: none;
+    flex-basis: 100%;
+  }
+}

@@ -1,0 +1,10 @@
+node_modules/
+dist/
+output/
+artifacts/
+anatomy-of-generation/
+*.tsbuildinfo
+.DS_Store
+.env*
+README.md
+ATTENTION.md
